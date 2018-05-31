@@ -38,11 +38,18 @@ const url = {
     // seasonsAndCast: `http://api.tvmaze.com/shows/${id}?embed[]=seasons&embed[]=cast`
 }
 
+
 export const fetchShow = () => {
 
+    const localData = localStorage.getItem("topShows");
+    if (localData) {
+        return new Promise((resolve, reject) => {
+            resolve(JSON.parse(localData));
+        })
+    } 
     return fetch(url.shows)
         .then(response => {
-            
+
             return response.json();
         })
         .then(myResponse => {
@@ -57,9 +64,15 @@ export const fetchShow = () => {
                 return b - a;
             })
             const top50Shows = listOfAllShows.slice(0, 50);
+            localStorage.setItem("topShows", JSON.stringify(top50Shows))
             return top50Shows;
         })
 }
+
+
+
+
+
 export const setLocalStorage = (id) => {
     localStorage.setItem("id", id);
     return id;

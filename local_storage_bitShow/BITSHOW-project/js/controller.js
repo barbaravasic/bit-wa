@@ -29,9 +29,10 @@ export const initSinglePage = () => {
 
 
 export const initHomepage = () => {
-  setupSearchHandler()
+  setupSearchHandler();
   data.fetchShow()
-    .then(ui.displayTop50)
-    .catch(ui.failed);
+  .then(ui.displayTop50)
+  .catch(ui.failed); 
 }
+
 
