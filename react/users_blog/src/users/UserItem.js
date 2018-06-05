@@ -1,12 +1,13 @@
 import React from 'react';
 
-export const UserItem = (props) => {
-    const {name, email, dob, pictureTh} = props.user;
+export const UserItem = ({user}) => {
+    const email = user.hideEmail();
+    const { name,dob, pictureTh } = user;
     return (
 
         <div className="card horizontal">
             <div className="card-image">
-                <img src={pictureTh} />
+                <img src={pictureTh} alt={name}/>
             </div>
             <div className="card-stacked">
                 <div className="card-content">

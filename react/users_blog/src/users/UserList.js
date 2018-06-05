@@ -18,7 +18,6 @@ export class UserList extends React.Component {
             this.setState({
                 users: response
             })
-            console.log(this.state.users)
         })
     }
     render() {
