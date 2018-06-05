@@ -2,18 +2,19 @@ import React from 'react';
 
 export const UserItem = ({user}) => {
     const email = user.hideEmail();
-    const { name,dob, pictureTh } = user;
+    const dob = user.formatDate();
+    const { name, pictureTh } = user;
     return (
 
-        <div className="card horizontal">
-            <div className="card-image">
-                <img src={pictureTh} alt={name}/>
-            </div>
+        <div className="collection-item avatar">
+            
+                <img src={pictureTh} alt={name} className="circle"/>
+            
             <div className="card-stacked">
                 <div className="card-content">
                     <p>{name}</p>
-                    <p>{email}</p>
-                    <p>{dob}</p>
+                    <p> <i className="tiny material-icons">email</i> {email}</p>
+                    <p><i className="tiny material-icons">cake</i> {dob}</p>
                 </div>
             </div>
         </div>

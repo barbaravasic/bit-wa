@@ -14,4 +14,9 @@ export class User {
         const shortEmail= `${splitEmail[0].slice(0,3)}...${lastThree}@${splitEmail[1]}`
         return shortEmail
     }
+
+    formatDate() {
+        const dateObj= new Date(this.dob)
+       return `${dateObj.getDate()}.${dateObj.getMonth()}.${dateObj.getFullYear()}`
+    }
 }
