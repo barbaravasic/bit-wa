@@ -1,27 +1,14 @@
 import React from 'react'
 import { UserItem } from './UserItem'
-import { getUsers } from '../../services/services';
+
 import { CardItem } from './CardItem';
 
-export class UserList extends React.Component {
-    constructor(props) {
-        super(props);
+export const UserList = (props) => {
 
-        this.state = {
-            users: []
-        };
-    }
+const {users} = props;
 
-    loadUsers() {
-        getUsers()
-            .then((users) => {
-                this.setState({
-                    users
-                })
-            })
-    }
+    const renderListItems = (users) => {
 
-    renderListItems(users) {
         return (
             <div className="collection">
                 {users.map((user, index) => {
@@ -31,7 +18,8 @@ export class UserList extends React.Component {
         )
     }
 
-    renderCardItems(users) {
+    const renderCardItems = (users) => {
+
         return (
             <div className="collection">
                 {users.map((user, index) => {
@@ -41,19 +29,17 @@ export class UserList extends React.Component {
         )
     }
 
-    componentDidMount() {
-        this.loadUsers()
+    const chooseLayout = (users) => {
+        return props.listView ?
+            renderListItems(users)
+            : renderCardItems(users)
     }
 
-    render() {
-        const { users } = this.state;
-        return (
-            <div className="container">
-                <div className="row">
-                    {/* {this.renderListItems(users)} */}
-                    {this.renderCardItems(users)}
-                </div>
+    return (
+        <div className="container" >
+            <div className="row">
+                {chooseLayout(users)}
             </div>
-        )
-    }
+        </div >
+    )
 }

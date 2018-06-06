@@ -20,3 +20,6 @@ export class User {
         return `${dateObj.getDate()}.${dateObj.getMonth()}.${dateObj.getFullYear()}`
     }
 }
+
+
+//view_list , view_module
