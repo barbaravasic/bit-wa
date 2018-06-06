@@ -1,15 +1,23 @@
 import React from 'react';
 
-export const UserItem = ({user}) => {
+export const UserItem = ({ user }) => {
     const email = user.hideEmail();
     const dob = user.formatDate();
-    const { name, pictureTh } = user;
+    const { name, pictureTh, gender } = user;
+
+    const togglePinkClass = () => {
+        if (gender === "female") {
+            return "collection-item avatar pink lighten-5"
+        } else {
+            return "collection-item avatar"
+        }
+    }
     return (
 
-        <div className="collection-item avatar">
-            
-                <img src={pictureTh} alt={name} className="circle"/>
-            
+        <div className={togglePinkClass()}>
+
+            <img src={pictureTh} alt={name} className="circle" />
+
             <div className="card-stacked">
                 <div className="card-content">
                     <p>{name}</p>

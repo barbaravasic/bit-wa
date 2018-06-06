@@ -11,7 +11,8 @@ export const getUsers = () => {
                 const dob = user.dob;
                 const pictureTh = user.picture.thumbnail;
                 const pictureLarge = user.picture.large;
-                return new User(name, email, dob, pictureTh, pictureLarge)
+                const gender = user.gender;
+                return new User(name, email, dob, pictureTh, pictureLarge, gender)
             })
 
             return users;

@@ -1,10 +1,11 @@
 export class User {
-    constructor(name, email, dob, pictureTh, pictureLarge) {
+    constructor(name, email, dob, pictureTh, pictureLarge, gender) {
         this.name = name;
         this.email = email;
         this.dob = dob;
         this.pictureTh = pictureTh;
         this.pictureLarge = pictureLarge;
+        this.gender = gender;
     }
 
     hideEmail() {

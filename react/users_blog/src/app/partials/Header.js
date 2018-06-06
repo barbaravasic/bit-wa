@@ -10,10 +10,10 @@ export const Header = (props) => {
           <ul>
             {
               state ?
-                <li className="right"><i className="material-icons right" onClick={() => stateSetting(state)} >view_list</i></li>
-                : <li className="right"><i className="material-icons " onClick={() => stateSetting(state)}>view_module</i></li>
+                <li className="right"><a><i className="material-icons right" onClick={() => stateSetting(state)} >view_list</i></a></li>
+                : <li className="right"><a><i className="material-icons " onClick={() => stateSetting(state)}>view_module</i></a></li>
             }
-            <li className="right"><i className="material-icons" onClick={() => loadUsers()}>refresh</i></li>
+            <li className="right"><a><i className="material-icons" onClick={() => loadUsers()}>refresh</i></a></li>
 
           </ul>
         </div>
