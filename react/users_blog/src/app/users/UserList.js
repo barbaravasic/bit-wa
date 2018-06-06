@@ -30,7 +30,9 @@ const {users} = props;
     }
 
     const chooseLayout = (users) => {
-        return props.listView ?
+        const listView = localStorage.getItem("listView")
+        console.log(listView)
+        return listView === "true" || listView === null ?
             renderListItems(users)
             : renderCardItems(users)
     }

@@ -26,22 +26,20 @@ export class App extends React.Component {
   }
 
   componentDidMount() {
-    this.loadUsers()
+    this.loadUsers();
   }
 
   stateSetting = (layout) => {
     if (layout === true) {
-      this.setState({ listView: false })
-    
+      this.setState({ listView: false });
+      localStorage.setItem("listView", !(this.state.listView))
     } else {
-      this.setState({ listView: true })
-   
+      this.setState({ listView: true });
+      localStorage.setItem("listView", !(this.state.listView))
     }
   }
 
-refreshPage = () => {
-  
-}
+
   render() {
     return (
       <React.Fragment>
