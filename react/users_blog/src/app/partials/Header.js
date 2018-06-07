@@ -23,7 +23,7 @@ export const Header = (props) => {
     <nav>
       <div className="nav-wrapper" >
         <div className="container">
-          <a className="brand-logo center">{title}</a>
+          <Link to ='/' className="brand-logo center">{title}</Link>
           <ul>
             {toggleGridIcon()}
             <li className="right"><a><i className="material-icons" onClick={() => loadUsers()}>refresh</i></a></li>
