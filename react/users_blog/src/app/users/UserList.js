@@ -2,6 +2,7 @@ import React from 'react'
 import { UserItem } from './UserItem'
 
 import { CardItem } from './CardItem';
+import { NoUsers } from '../partials/NoUsers';
 
 export const UserList = (props) => {
 
@@ -21,6 +22,8 @@ export const UserList = (props) => {
                     })}
                 </div>
             )
+        } else if (filterUsers(users, inputValue).length === 0) {
+            return <NoUsers />;
         } else {
             return (
                 <div className="collection">
@@ -41,6 +44,8 @@ export const UserList = (props) => {
                     })}
                 </div>
             )
+        } else if (filterUsers(users, inputValue).length === 0) {
+            return <NoUsers />;
         } else {
             return (
                 <div className="collection">
