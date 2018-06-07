@@ -7,9 +7,9 @@ import { Header } from './partials/Header'
 import { Footer } from './partials/Footer'
 import { Home } from './pages/Home'
 import { Loader } from './partials/Loader';
+import { About } from './pages/About'
 
 import { Route } from 'react-router-dom'
-import { About } from './pages/About'
 
 
 export class App extends React.Component {
@@ -63,17 +63,13 @@ export class App extends React.Component {
     }
   }
 
-  onAboutClick = () => {
-  }
-
-
   render() {
 
     return (
       <React.Fragment>
         <Header title='Bit Users' listView={this.state.listView} onListViewChange={this.onListViewChange} loadUsers={this.loadUsers} onAboutClick={this.onAboutClick} />
         <Route exact path='/' render={() => this.renderMyView()} />
-        <Route exact path='/About' render={() => <About />} />
+        <Route exact path='/About' component={About} />
         <Footer />
       </React.Fragment>
     )

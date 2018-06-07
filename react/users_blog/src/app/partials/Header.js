@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const Header = (props) => {
-  const { title, listView, onListViewChange, loadUsers, onAboutClick } = props;
+  const { title, listView, onListViewChange, loadUsers } = props;
 
   const viewModeHandler = (event) => {
     event.preventDefault();
@@ -27,7 +27,7 @@ export const Header = (props) => {
           <ul>
             {toggleGridIcon()}
             <li className="right"><a><i className="material-icons" onClick={() => loadUsers()}>refresh</i></a></li>
-            <li className="right"><Link to='/About' onClick={() => {onAboutClick()}}>About</Link></li>
+            <li className="right"><Link to='/About'>About</Link></li>
           </ul>
         </div>
 
