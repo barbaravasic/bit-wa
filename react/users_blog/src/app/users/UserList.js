@@ -8,7 +8,7 @@ export const UserList = (props) => {
     const { users, inputValue, listView } = props;
 
     const filterUsers = (users, value) => {
-        return users.filter((user, index) => user.name.includes(value));
+        return users.filter((user, index) => user.name.toLowerCase().includes(value));
     }
 
 
@@ -53,7 +53,7 @@ export const UserList = (props) => {
     }
 
     const chooseLayout = (users) => {
-        return listView ?
+        return !listView ?
             renderCardItems(users)
             : renderListItems(users)
     }

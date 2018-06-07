@@ -10,7 +10,7 @@ export const Header = (props) => {
   }
 
   const toggleGridIcon = () => {
-    if (listView) {
+    if (!listView) {
       return <li className="right"><a><i className="material-icons right" onClick={viewModeHandler} >view_list</i></a></li>
 
     } else {
@@ -30,8 +30,6 @@ export const Header = (props) => {
             <li className="right"><Link to='/About'>About</Link></li>
           </ul>
         </div>
-
-
       </div>
     </nav>
   )
