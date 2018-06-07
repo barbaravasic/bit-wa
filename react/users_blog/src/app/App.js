@@ -41,15 +41,15 @@ export class App extends React.Component {
   }
 
   onListViewChange = () => {
-
     const isListView = this.state.listView
     this.setState({ listView: !isListView });
     localStorage.setItem("listView", !isListView)
   }
 
   handleSearchBar = (event) => {
+    const eventValue = event.target.value;
     this.setState({
-      inputValue: event.target.value
+      inputValue: eventValue.toLowerCase()
     })
   }
 
