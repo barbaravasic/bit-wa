@@ -50,28 +50,28 @@ export class App extends React.Component {
     })
   }
 
-
-  render() {
+  renderMyView() {
     if (this.state.loading) {
-      return (
-        <React.Fragment>
-          <Header title='Bit Users' listView={this.state.listView} onListViewChange={this.onListViewChange} loadUsers={this.loadUsers} />
-          <Loader />
-          <Footer />
-        </React.Fragment>
-      )
+      return <Loader />
     } else {
-      return (
-        <React.Fragment>
-          <Header title='Bit Users' listView={this.state.listView} onListViewChange={this.onListViewChange} loadUsers={this.loadUsers} />
-          <SearchBar handleSearchBar={this.handleSearchBar} inputValue={this.state.inputValue} />
-          <Main listView={this.state.listView} users={this.state.users} inputValue={this.state.inputValue} />
-          <Footer />
-        </React.Fragment>
-      )
-
+      return [
+        <SearchBar handleSearchBar={this.handleSearchBar} inputValue={this.state.inputValue} />,
+        <Main listView={this.state.listView} users={this.state.users} inputValue={this.state.inputValue} />
+      ]
     }
   }
 
+
+  render() {
+
+    return (
+      <React.Fragment>
+        <Header title='Bit Users' listView={this.state.listView} onListViewChange={this.onListViewChange} loadUsers={this.loadUsers} />
+        {this.renderMyView()}
+        <Footer />
+      </React.Fragment>
+    )
+
+  }
 }
 
