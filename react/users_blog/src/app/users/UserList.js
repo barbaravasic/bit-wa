@@ -6,7 +6,7 @@ import { NoUsers } from '../partials/NoUsers';
 
 export const UserList = (props) => {
 
-    const { users, inputValue, listView } = props;
+    const { inputValue, listView, users } = props;
 
     const filterUsers = (users, value) => {
         return users.filter((user, index) => user.name.toLowerCase().includes(value));
@@ -36,6 +36,7 @@ export const UserList = (props) => {
     }
 
     const renderCardItems = (users) => {
+        
         if (inputValue === "") {
             return (
                 <div className="collection">

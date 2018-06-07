@@ -17,7 +17,7 @@ export class App extends React.Component {
     super();
     this.state = {
       listView: !localStorage.getItem("listView"),
-      users: [],
+      users: JSON.parse(localStorage.getItem("prevUsers")),
       inputValue: "",
       loading: true
     };
@@ -33,6 +33,7 @@ export class App extends React.Component {
           users,
           loading: false
         })
+        localStorage.setItem("prevUsers", JSON.stringify(this.state.users))
       })
   }
 
