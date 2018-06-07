@@ -7,6 +7,7 @@ import { Header } from './partials/Header'
 import { Footer } from './partials/Footer'
 import { Main } from './partials/Main'
 import { SearchBar } from './partials/SearchBar'
+import { Loader } from './partials/Loader';
 
 export class App extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ export class App extends React.Component {
       listView: !localStorage.getItem("listView"),
       users: [],
       inputValue: "",
-
+      loading: true
     };
   }
 
@@ -23,7 +24,8 @@ export class App extends React.Component {
     getUsers()
       .then((users) => {
         this.setState({
-          users
+          users,
+          loading: false
         })
       })
   }
@@ -43,23 +45,29 @@ export class App extends React.Component {
     this.setState({
       inputValue: event.target.value
     })
-
-    // const filteredUsers = users.filter(user =>
-    //   user.name.includes(inputValue)
-    // )
   }
 
 
   render() {
-    return (
-      <React.Fragment>
-        <Header title='Bit Users' listView={this.state.listView} onListViewChange={this.onListViewChange} loadUsers={this.loadUsers} />
-        <SearchBar handleSearchBar={this.handleSearchBar} inputValue={this.state.inputValue} />
-        <Main listView={this.state.listView} users={this.state.users}  inputValue={this.state.inputValue}/>
-        <Footer />
-      </React.Fragment>
+    if (this.state.loading) {
+      return (
+        <React.Fragment>
+          <Header title='Bit Users' listView={this.state.listView} onListViewChange={this.onListViewChange} loadUsers={this.loadUsers} />
+          <Loader />
+          <Footer />
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <Header title='Bit Users' listView={this.state.listView} onListViewChange={this.onListViewChange} loadUsers={this.loadUsers} />
+          <SearchBar handleSearchBar={this.handleSearchBar} inputValue={this.state.inputValue} />
+          <Main listView={this.state.listView} users={this.state.users} inputValue={this.state.inputValue} />
+          <Footer />
+        </React.Fragment>
+      )
 
-    )
+    }
   }
 
 }
