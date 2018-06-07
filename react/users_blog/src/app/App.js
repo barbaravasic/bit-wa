@@ -5,9 +5,12 @@ import { getUsers } from '../services/services';
 
 import { Header } from './partials/Header'
 import { Footer } from './partials/Footer'
-import { Main } from './partials/Main'
-import { SearchBar } from './partials/SearchBar'
+import { Home } from './pages/Home'
 import { Loader } from './partials/Loader';
+
+import { Route } from 'react-router-dom'
+import { About } from './pages/About'
+
 
 export class App extends React.Component {
   constructor() {
@@ -54,11 +57,13 @@ export class App extends React.Component {
     if (this.state.loading) {
       return <Loader />
     } else {
-      return [
-        <SearchBar handleSearchBar={this.handleSearchBar} inputValue={this.state.inputValue} />,
-        <Main listView={this.state.listView} users={this.state.users} inputValue={this.state.inputValue} />
-      ]
+      return (
+        <Home handleSearchBar={this.handleSearchBar} inputValue={this.state.inputValue} listView={this.state.listView} users={this.state.users} />
+      )
     }
+  }
+
+  onAboutClick = () => {
   }
 
 
@@ -66,8 +71,9 @@ export class App extends React.Component {
 
     return (
       <React.Fragment>
-        <Header title='Bit Users' listView={this.state.listView} onListViewChange={this.onListViewChange} loadUsers={this.loadUsers} />
-        {this.renderMyView()}
+        <Header title='Bit Users' listView={this.state.listView} onListViewChange={this.onListViewChange} loadUsers={this.loadUsers} onAboutClick={this.onAboutClick} />
+        <Route exact path='/' render={() => this.renderMyView()} />
+        <Route exact path='/About' render={() => <About />} />
         <Footer />
       </React.Fragment>
     )
