@@ -21,6 +21,9 @@ export class App extends React.Component {
   }
 
   loadUsers = () => {
+    this.setState({
+      loading: true
+    })
     getUsers()
       .then((users) => {
         this.setState({
