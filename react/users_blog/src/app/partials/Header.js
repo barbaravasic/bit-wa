@@ -1,7 +1,14 @@
 import React from 'react';
 
 export const Header = (props) => {
-  const { title, state, stateSetting, loadUsers} = props;
+  const { title, listView, onListViewChange, loadUsers } = props;
+
+  const viewModeHandler = (event) => {
+    event.preventDefault();
+    onListViewChange();
+  }
+
+
   return (
     <nav>
       <div className="nav-wrapper" >
@@ -9,9 +16,9 @@ export const Header = (props) => {
           <a className="brand-logo center">{title}</a>
           <ul>
             {
-              state ?
-                <li className="right"><a><i className="material-icons right" onClick={() => stateSetting(state)} >view_list</i></a></li>
-                : <li className="right"><a><i className="material-icons " onClick={() => stateSetting(state)}>view_module</i></a></li>
+              listView ?
+                <li className="right"><a><i className="material-icons right" onClick={viewModeHandler} >view_list</i></a></li>
+                :<li className="right"><a><i className="material-icons " onClick={viewModeHandler}>view_module</i></a></li>
             }
             <li className="right"><a><i className="material-icons" onClick={() => loadUsers()}>refresh</i></a></li>
 
