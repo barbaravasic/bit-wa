@@ -18,6 +18,7 @@ export const getUsers = () => {
                 return new User(name, email, dob, pictureTh, pictureLarge, gender)
             })
 
+            localStorage.setItem("prevUsers", JSON.stringify(users))
             return users;
         })
 }

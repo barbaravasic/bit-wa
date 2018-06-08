@@ -15,9 +15,7 @@ export const UserItem = ({ user }) => {
     return (
 
         <div className={togglePinkClass()}>
-
             <img src={pictureTh} alt={name} className="circle" />
-
             <div className="card-stacked">
                 <div className="card-content">
                     <p>{name}</p>
