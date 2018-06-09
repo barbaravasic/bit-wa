@@ -1,18 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const PostItem = () => {
     return (
-        <div class="row">
-            <div class="col s12 m6">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <span class="card-title">Card Title</span>
-                        <p>I am a very simple card. I am good at containing small bits of information.
+        <div className="container">
+            <div className="row">
+                <div className="col s12">
+                    <div className="card #f9fbe7 lime lighten-4">
+                        <div className="card-content">
+                            <span className="card-title "><Link to='/post/1' className="grey-text text-darken-3">Card Title</Link></span>
+                            <p className="grey-text text-darken-3">I am a very simple card. I am good at containing small bits of information.
           I am convenient because I require little markup to use effectively.</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                        <a href="#">This is a link</a>
+                        </div>
                     </div>
                 </div>
             </div>
