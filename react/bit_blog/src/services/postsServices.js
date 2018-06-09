@@ -14,13 +14,14 @@ class PostServices {
         return fetch(postsEndpoint)
             .then(response => response.json())
     }
-    // fetchSinglePost(singlePostEndpoint) {
-    //     return fetch(singlePostEndpoint)
-    //     .then(respose => response.json())
-    //     .then(response => {
-    //         return new Post (title, body, id)
-    //     })
-    // }
+    
+    fetchSinglePost(singlePostEndpoint) {
+        return fetch(singlePostEndpoint)
+        .then(respose => response.json())
+        .then(response => {
+            return new Post(response.title, response.body,response.id)
+        })
+    }
 
     adaptData(postData) {
         const myPostData = postData.map(post => {

@@ -1,7 +1,7 @@
 export default class Post {
-    constructor(title, body, id) {
+    constructor(title, body, postId) {
         this.title = title;
         this.body = body;
-        this.id = id;
+        this.postId = postId;
     }
 }

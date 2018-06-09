@@ -13,7 +13,7 @@ import { postService } from '../services/postsServices';
 
 
 export const App = () => {
- 
+
   return (
     <Fragment>
       <main>
@@ -21,9 +21,9 @@ export const App = () => {
         <Route exact path='/' component={Posts} />
         <Route exact path='/posts/new' component={NewPost} />
         <Route exact path='/Authors' component={Authors} />
-        <Route exact path='/author/id' component={SingleAuthor} />
+        <Route exact path='/author/:id' component={SingleAuthor} />
         <Route exact path='/About' component={About} />
-        {/* <Route exact path={} render={() => <SinglePost posts={postService.getData("posts")} />} /> */}
+        <Route path="/posts/:postId" component={SinglePost} />
       </main>
       <Footer />
     </Fragment>

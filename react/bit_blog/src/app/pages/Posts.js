@@ -25,9 +25,7 @@ class Posts extends Component {
     }
     render() {
         return (
-
-                <PostList posts={this.state.posts} />
-                
+            <PostList posts={this.state.posts} />
         );
     }
 }
