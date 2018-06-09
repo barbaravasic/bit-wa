@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 
 export const AboutSingleAuthor = () => {
     return (
-        <div className="container">
+        <div className="container ">
             <h2 className="center-align" ><Link to="/Authors" className="left"><button className="waves-effect waves-light btn-small">All authors</button></Link>Single Author</h2>
             <div className="row">
                 <div className="col s6">

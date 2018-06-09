@@ -1,11 +1,19 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import { PostItem } from './PostItem';
 
-const PostList = () => {
+const PostList = (props) => {
+
+    const renderPostList = () => {
+        return props.posts.map((post, index) => {
+            return (
+            <PostItem post={post} key={index} />
+            )
+        })
+    }
     return (
         <Fragment>
-        <h2 className="center-align">Posts</h2>
-        <PostItem />
+            <h2 className="center-align">Posts</h2>
+            {renderPostList()}
         </Fragment>
     );
 };
