@@ -11,8 +11,6 @@ export const UserList = (props) => {
     const filterUsers = (users, value) => {
         return users.filter((user, index) => user.name.toLowerCase().includes(value));
     }
-
-
     const renderListItems = (users) => {
         if (inputValue === "") {
             return (

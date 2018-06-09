@@ -10,6 +10,7 @@ import { Loader } from './partials/Loader';
 import { About } from './pages/About'
 
 import { Route } from 'react-router-dom'
+import { User } from '../entities/User';
 
 
 export class App extends React.Component {
@@ -33,12 +34,25 @@ export class App extends React.Component {
           users,
           loading: false
         })
-    
+        localStorage.setItem("prevUsers", JSON.stringify(this.state.users));
+        localStorage.setItem("lastVisit", JSON.stringify(Date.now()));
       })
   }
   componentDidMount() {
-    this.loadUsers();
-   
+    if(localStorage.getItem("prevUsers") === null){
+      this.loadUsers();
+
+    } else {
+      const storedUsers = JSON.parse(localStorage.getItem("prevUsers")).map((user, index) => {
+        const {name, email, dob, pictureTh, pictureLarge, gender} = user;
+        return new User(name, email, dob, pictureTh, pictureLarge, gender)
+      })
+
+      this.setState({
+        users:storedUsers,
+        loading:false
+      })
+    }
   }
 
   onListViewChange = () => {
