@@ -4,6 +4,7 @@ import { postService } from '../../services/postsServices';
 import { postsEndpoint } from "../../shared/constants";
 
 
+
 class Posts extends Component {
     constructor(props) {
         super(props);
@@ -13,7 +14,7 @@ class Posts extends Component {
     }
 
     componentDidMount() {
-         postService.fetchPosts(postsEndpoint)
+        postService.fetchPosts(postsEndpoint)
             .then(postsData => postService.adaptData(postsData))
             .then(myPosts => {
                 this.setState({
@@ -24,7 +25,9 @@ class Posts extends Component {
     }
     render() {
         return (
-            <PostList posts={this.state.posts} />
+
+                <PostList posts={this.state.posts} />
+                
         );
     }
 }

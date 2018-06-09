@@ -1,8 +1,14 @@
-import React from 'react';
-import { AboutSinglePost } from '../components/singlePost/AboutSinglePost';
+// import React, { Component } from 'react';
+// import { AboutSinglePost } from '../components/singlePost/AboutSinglePost';
 
-export const SinglePost = () => {
-    return (
-        <AboutSinglePost />
-    )
-}
+// class SinglePost extends Component {
+//     constructor() {
+//         super()
+//     }
+
+//     render() {
+//         return (
+//             <AboutSinglePost post={props.post} />
+//         )
+//     }
+// }

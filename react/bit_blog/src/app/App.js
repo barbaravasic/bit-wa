@@ -7,21 +7,23 @@ import { Posts } from './pages/Posts';
 import { NewPost } from './pages/NewPost';
 import { Authors } from './pages/Authors';
 import { About } from './pages/About';
-import { SinglePost } from './pages/SinglePost';
 import { SingleAuthor } from './pages/SingleAuthor';
+import { SinglePost } from './pages/SinglePost';
+import { postService } from '../services/postsServices';
+
 
 export const App = () => {
-
+ 
   return (
     <Fragment>
       <main>
-      <Header />
-      <Route exact path='/' component={Posts} />
-      <Route exact path='/posts/new' component={NewPost} />
-      <Route exact path='/Authors' component={Authors} />
-      <Route exact path='/post/1' component={SinglePost} />
-      <Route exact path='/author/id' component={SingleAuthor} />
-      <Route exact path='/About' component={About} />
+        <Header />
+        <Route exact path='/' component={Posts} />
+        <Route exact path='/posts/new' component={NewPost} />
+        <Route exact path='/Authors' component={Authors} />
+        <Route exact path='/author/id' component={SingleAuthor} />
+        <Route exact path='/About' component={About} />
+        {/* <Route exact path={} render={() => <SinglePost posts={postService.getData("posts")} />} /> */}
       </main>
       <Footer />
     </Fragment>
