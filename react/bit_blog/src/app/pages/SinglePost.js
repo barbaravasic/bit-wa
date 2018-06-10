@@ -11,17 +11,17 @@ class SinglePost extends Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        let newPostId = nextProps.match.params.postId;
+    // componentWillReceiveProps(nextProps) {
+    //     let newPostId = nextProps.match.params.postId;
 
-        const singlePostEndpoint = `${postsEndpoint}/${newPostId}`
-        postService.fetchSinglePost(singlePostEndpoint)
-            .then(post => {
-                this.setState({
-                    post: post
-                })
-            })
-    }
+    //     const singlePostEndpoint = `${postsEndpoint}/${newPostId}`
+    //     postService.fetchSinglePost(singlePostEndpoint)
+    //         .then(post => {
+    //             this.setState({
+    //                 post: post
+    //             })
+    //         })
+    // }
 
     componentDidMount() {
         let postId = this.props.match.params.postId;
@@ -36,7 +36,6 @@ class SinglePost extends Component {
                     post
                 })
             })
-
     }
 
     render() {

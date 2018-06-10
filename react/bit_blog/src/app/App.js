@@ -20,8 +20,8 @@ export const App = () => {
         <Switch>
           <Route exact path='/' component={Posts} />
           <Route path='/posts/new' component={NewPost} />
+          <Route path='/authors/:authorId' component={SingleAuthor} />
           <Route path='/Authors' component={Authors} />
-          <Route path='/author/:id' component={SingleAuthor} />
           <Route path='/About' component={About} />
           <Route path="/posts/:postId" component={SinglePost} />
         </Switch>

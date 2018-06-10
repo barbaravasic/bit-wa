@@ -1,9 +1,31 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import { AuthorsList } from '../components/authors/AuthorsList';
+import { authorsServices } from '../../services/authorsServices';
+import { authorsEndpoint } from '../../shared/constants';
 
-export const Authors = () => {
-    return (
-        <AuthorsList />
-    )
+class Authors extends Component{
+    constructor() {
+        super();
+        this.state = {
+            authors:[]
+        }
+    }
+
+    componentDidMount() {
+        authorsServices.fetchAuthors(authorsEndpoint)
+        .then(authors => {
+            this.setState({
+                authors
+            })
+        })
+
+    }
+
+    render() {
+        return (
+            <AuthorsList authors={this.state.authors}/>
+        )
+    }
 }
+export {Authors}

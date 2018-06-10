@@ -15,13 +15,11 @@ class Posts extends Component {
 
     componentDidMount() {
         postService.fetchPosts(postsEndpoint)
-            .then(postsData => postService.adaptData(postsData))
             .then(myPosts => {
                 this.setState({
                     posts: myPosts
                 })
             })
-
     }
     render() {
         return (

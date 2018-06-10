@@ -4,9 +4,9 @@ import { PostItem } from './PostItem';
 const PostList = (props) => {
 
     const renderPostList = () => {
-        return props.posts.map((post, index) => {
+        return props.posts.map((post) => {
             return (
-            <PostItem post={post} key={index} />
+            <PostItem post={post} key={post.postId} />
             )
         })
     }

@@ -2,11 +2,15 @@ import React, {Fragment} from 'react';
 
 import { AuthorsItem } from './AuthorsItem';
 
-const AuthorsList = () => {
+const AuthorsList = (props) => {
+    const {authors} = props
     return (
         <Fragment>
         <h2 className="center-align">Authors</h2>
-        <AuthorsItem />
+        {authors.map((author) => {
+            return <AuthorsItem author={author} key={author.authorId}/>
+        })}
+        
         </Fragment>
     );
 };
