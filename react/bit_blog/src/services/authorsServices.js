@@ -16,7 +16,12 @@ class AuthorsServices {
     fetchSingleAuthor(singleAuthorEndpoint) {
         return fetch(singleAuthorEndpoint)
             .then(response => response.json())
-            .then(myResponse => this.createAuthorInstance(myResponse))
+            .then(myResponse => {
+
+                const newAuthor = this.createAuthorInstance(myResponse)
+                storageServices.saveData('singleAuthor', newAuthor)
+                return newAuthor
+            })
     }
 
     adaptAuthorsData(authorsData) {
@@ -34,17 +39,24 @@ class AuthorsServices {
         const companyName = company.name;
         const slogan = company.catchPhrase
         const authorId = id;
-        return new Author(authorId, name, username, email, street,city, zipcode, phone, companyName, slogan);
+        return new Author(authorId, name, username, email, street, city, zipcode, phone, companyName, slogan);
     }
 
     getAuthors() {
         const authors = storageServices.getData("authors");
-        
+
         const adaptedAuthors = authors.map(author => {
-            const {authorId, name, username, email, street,city, zipcode, phone, companyName, slogan} = author;
-            return new Author(authorId, name, username, email, street,city, zipcode, phone, companyName, slogan)
+            const { authorId, name, username, email, street, city, zipcode, phone, companyName, slogan } = author;
+            return new Author(authorId, name, username, email, street, city, zipcode, phone, companyName, slogan)
         });
         return adaptedAuthors;
+    }
+
+    getSingleAuthor() {
+        const singleAuthor = storageServices.getData("singleAuthor");
+
+        const { authorId, name, username, email, street, city, zipcode, phone, companyName, slogan } = singleAuthor;
+        return new Author(authorId, name, username, email, street, city, zipcode, phone, companyName, slogan)
     }
 }
 

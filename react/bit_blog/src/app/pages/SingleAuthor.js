@@ -23,7 +23,6 @@ class SingleAuthor extends Component {
                 author:author
             })
         })
-        
     }
 
     render() {
