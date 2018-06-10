@@ -1,11 +1,11 @@
-class storageServices {
-    saveData = (data, key) => {
-        localStorage.setItem(key, data);
+class StorageServices {
+    saveData = (key, data) => {
+        localStorage.setItem(key, JSON.stringify(data));
     }
 
     getData = (key) => {
-        return localStorage.getItem(key);
+        return JSON.parse(localStorage.getItem(key));
     }
 }
 
-export const storageServices = new StorageServices;
+export const storageServices = new StorageServices();

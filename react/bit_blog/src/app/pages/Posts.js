@@ -20,6 +20,8 @@ class Posts extends Component {
                     posts: myPosts
                 })
             })
+
+            postService.getPosts()
     }
     render() {
         return (

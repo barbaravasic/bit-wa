@@ -1,10 +1,16 @@
 import Author from "../models/Author";
+import { storageServices } from "../shared/storageServices";
 
 class AuthorsServices {
     fetchAuthors(authorsEndpoint) {
         return fetch(authorsEndpoint)
             .then(response => response.json())
-            .then(myResponse => this.adaptAuthorsData(myResponse))
+            .then(myResponse => {
+                const authorsList = this.adaptAuthorsData(myResponse)
+
+                storageServices.saveData('authors', authorsList)
+                return authorsList;
+            })
     }
 
     fetchSingleAuthor(singleAuthorEndpoint) {
@@ -29,6 +35,16 @@ class AuthorsServices {
         const slogan = company.catchPhrase
         const authorId = id;
         return new Author(authorId, name, username, email, street,city, zipcode, phone, companyName, slogan);
+    }
+
+    getAuthors() {
+        const authors = storageServices.getData("authors");
+        
+        const adaptedAuthors = authors.map(author => {
+            const {authorId, name, username, email, street,city, zipcode, phone, companyName, slogan} = author;
+            return new Author(authorId, name, username, email, street,city, zipcode, phone, companyName, slogan)
+        });
+        return adaptedAuthors;
     }
 }
 

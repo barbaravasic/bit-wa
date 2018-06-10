@@ -19,7 +19,6 @@ class Authors extends Component{
                 authors
             })
         })
-
     }
 
     render() {

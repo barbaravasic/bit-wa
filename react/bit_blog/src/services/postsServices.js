@@ -1,4 +1,5 @@
 import Post from "../models/Post";
+import { storageServices } from "../shared/storageServices";
 
 class PostServices {
 
@@ -6,7 +7,12 @@ class PostServices {
     fetchPosts(postsEndpoint) {
         return fetch(postsEndpoint)
             .then(response => response.json())
-            .then(myData => this.adaptPostData(myData))
+            .then(myData => {
+                const postsList = this.adaptPostData(myData)
+
+                storageServices.saveData('posts', postsList)
+                return postsList
+            })
     }
 
     fetchSinglePost(singlePostEndpoint) {
@@ -24,10 +30,17 @@ class PostServices {
     }
 
     createPostInstance(post) {
-        let { title, body, id } = post;
+        let { title, body, id, userId } = post;
         title = `${title.charAt(0).toUpperCase()}${title.slice(1)}`;
         body = `${body.charAt(0).toUpperCase()}${body.slice(1)}`
-        return new Post(title, body, id)
+        return new Post(title, body, id, userId)
+    }
+
+    getPosts() {
+        const posts = storageServices.getData("posts");
+        const adaptedPosts = this.adaptPostData(posts);
+
+        return adaptedPosts;
     }
 }
 
