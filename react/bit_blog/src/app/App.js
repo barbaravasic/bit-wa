@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import { Header } from './partials/Header';
 import { Footer } from './partials/Footer';
@@ -9,7 +9,6 @@ import { Authors } from './pages/Authors';
 import { About } from './pages/About';
 import { SingleAuthor } from './pages/SingleAuthor';
 import { SinglePost } from './pages/SinglePost';
-import { postService } from '../services/postsServices';
 
 
 export const App = () => {
@@ -18,12 +17,14 @@ export const App = () => {
     <Fragment>
       <main>
         <Header />
-        <Route exact path='/' component={Posts} />
-        <Route exact path='/posts/new' component={NewPost} />
-        <Route exact path='/Authors' component={Authors} />
-        <Route exact path='/author/:id' component={SingleAuthor} />
-        <Route exact path='/About' component={About} />
-        <Route path="/posts/:postId" component={SinglePost} />
+        <Switch>
+          <Route exact path='/' component={Posts} />
+          <Route path='/posts/new' component={NewPost} />
+          <Route path='/Authors' component={Authors} />
+          <Route path='/author/:id' component={SingleAuthor} />
+          <Route path='/About' component={About} />
+          <Route path="/posts/:postId" component={SinglePost} />
+        </Switch>
       </main>
       <Footer />
     </Fragment>

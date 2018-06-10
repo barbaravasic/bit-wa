@@ -13,11 +13,12 @@ class SinglePost extends Component {
 
     componentWillReceiveProps(nextProps) {
         let newPostId = nextProps.match.params.postId;
+
         const singlePostEndpoint = `${postsEndpoint}/${newPostId}`
         postService.fetchSinglePost(singlePostEndpoint)
             .then(post => {
                 this.setState({
-                    post:post
+                    post: post
                 })
             })
     }
@@ -44,4 +45,4 @@ class SinglePost extends Component {
         )
     }
 }
-export {SinglePost};
+export { SinglePost };

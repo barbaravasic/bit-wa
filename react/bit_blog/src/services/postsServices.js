@@ -1,4 +1,4 @@
-import  Post from "../models/Post";
+import Post from "../models/Post";
 
 class PostServices {
 
@@ -14,22 +14,26 @@ class PostServices {
         return fetch(postsEndpoint)
             .then(response => response.json())
     }
-    
+
     fetchSinglePost(singlePostEndpoint) {
         return fetch(singlePostEndpoint)
-        .then(respose => response.json())
-        .then(response => {
-            return new Post(response.title, response.body,response.id)
-        })
+            .then(response => response.json())
+            .then(data => {
+                let { title, body, id } = data;
+                title = `${title.charAt(0).toUpperCase()}${title.slice(1)}`;
+                body = `${body.charAt(0).toUpperCase()}${body.slice(1)}`
+                return new Post(title, body, id)
+            })
     }
 
     adaptData(postData) {
         const myPostData = postData.map(post => {
-            const {title, body, id} = post;
-            return new Post (title, body, id)
+            let { title, body, id } = post;
+            title = `${title.charAt(0).toUpperCase()}${title.slice(1)}`;
+            body = `${body.charAt(0).toUpperCase()}${body.slice(1)}`
+            return new Post(title, body, id)
         })
         this.saveData("posts", myPostData);
-        
         return myPostData;
     }
 }
