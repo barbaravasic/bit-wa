@@ -10,7 +10,7 @@ class SinglePost extends Component {
         this.state = {
             post: {},
             author: {},
-            authorsPosts:[]
+            authorsPosts: []
         }
     }
 
@@ -35,7 +35,7 @@ class SinglePost extends Component {
                         postService.fetchPosts(postsEndpoint)
                             .then(postList => {
                                 const authorsPosts = postList.filter(post => {
-                                   return post.userId === author.authorId;
+                                    return post.userId === author.authorId;
                                 })
                                 this.setState({
                                     authorsPosts
@@ -48,7 +48,7 @@ class SinglePost extends Component {
     render() {
 
         return (
-            <AboutSinglePost post={this.state.post} author={this.state.author} authorsPosts={this.state.authorsPosts}/>
+            <AboutSinglePost post={this.state.post} author={this.state.author} authorsPosts={this.state.authorsPosts} />
         )
     }
 }

@@ -2,8 +2,6 @@ import Post from "../models/Post";
 import { storageServices } from "../shared/storageServices";
 
 class PostServices {
-
-
     fetchPosts(postsEndpoint) {
         return fetch(postsEndpoint)
             .then(response => response.json())
@@ -35,6 +33,7 @@ class PostServices {
         body = `${body.charAt(0).toUpperCase()}${body.slice(1)}`
         return new Post(title, body, id, userId)
     }
+
 
     getPosts() {
         const posts = storageServices.getData("posts");

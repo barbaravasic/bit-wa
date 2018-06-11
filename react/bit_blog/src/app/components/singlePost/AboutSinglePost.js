@@ -16,7 +16,7 @@ export const AboutSinglePost = (props) => {
                 </div>
                 <div className="card-content #dce775 lime lighten-2 gray-text">
                     {authorsPosts.map((authorsPost, index) => {
-                        return <AuthorsPostItem authorsPostTitle={authorsPosts.title} key={index} />
+                        return <AuthorsPostItem authorsPostTitle={authorsPost.title} key={index} />
                     })}
                  
                 </div>
