@@ -1,2 +1,2 @@
-export const postsEndpoint = "https://jsonplaceholder.typicode.com/posts";
-export const authorsEndpoint = "https://jsonplaceholder.typicode.com/users";
+export const postsEndpoint = "http://localhost:3000/posts";
+export const authorsEndpoint = "http://localhost:3000/authors";

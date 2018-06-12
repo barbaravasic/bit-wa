@@ -14,17 +14,6 @@ class PostsPage extends Component {
     }
 
     componentDidMount() {
-
-        if (postService.getMyPosts()) {
-            const createdPosts = postService.getMyPosts();
-            const adaptedPosts = createdPosts.map(createdPost => {
-                return postService.adaptMyPost(createdPost)
-            })
-            console.log(adaptedPosts)
-            this.setState({
-                posts: adaptedPosts
-            })
-        } else {
             postService.fetchPosts(postsEndpoint)
                 .then(myPosts => {
                     this.setState({
@@ -32,7 +21,6 @@ class PostsPage extends Component {
                     })
                 })
         }
-    }
 
     render() {
         return (
