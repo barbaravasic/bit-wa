@@ -39,6 +39,15 @@ class AuthorsServices {
         const authorId = id;
         return new Author(authorId, name, username, email, street, city, zipcode, phone, companyName, slogan);
     }
+
+    fetchRandomPicture(randomPictureEndpoint) {
+        return fetch(randomPictureEndpoint)
+        .then(response => response.json())
+        .then(response => {
+            const pictureSrc = response.results[0].picture.large;
+            return pictureSrc;
+        })
+    }
 }
 
 export const authorsServices = new AuthorsServices();

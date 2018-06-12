@@ -68,6 +68,13 @@ class PostServices {
         const postsFromStorage = JSON.parse(localStorage.getItem("createdPosts"))
         return postsFromStorage
     }
+
+    deletePost(postId, postsEndpoint) {
+        return fetch(`${postsEndpoint}/${postId}`, {
+            method: 'DELETE'
+        })
+    }
+
 }
 
 export const postService = new PostServices();

@@ -1,8 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { postService } from '../../../services/postServices';
+import { postsEndpoint } from '../../../shared/constants';
 
 const PostItem = (props) => {
-    const { title, body, postId } = props.post;  
+    const { title, body, postId, userId} = props.post; 
+
+    const onDelete= (postId) => {
+        postService.deletePost(postId, postsEndpoint)
+            .then(response => window.location.reload())
+    }
+    const deleteButton = (userId) => {
+        if(userId === 11){
+            return  <button className="waves-effect  btn-large #00acc1 cyan darken-3 right" onClick={() => onDelete(postId)}>Delete</button>
+        }
+    } 
     return (
             <div className="container">
                 <div className="row">
@@ -14,6 +26,7 @@ const PostItem = (props) => {
                             </div>
                         </div>
                     </div>
+                    <div className="col s3 right">{deleteButton(userId)}</div>
                 </div>
             </div>   
     );
